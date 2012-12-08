@@ -1,4 +1,7 @@
 Direktkreditverwaltung::Application.routes.draw do
+  resources :contracts
+
+
   resources :contacts
 
 

@@ -1,0 +1,33 @@
+<h1>Listing contracts</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Contact</th>
+    <th>Start</th>
+    <th>Duration month</th>
+    <th>Duration years</th>
+    <th>Interest rate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contracts.each do |contract| %>
+  <tr>
+    <td><%= contract.number %></td>
+    <td><%= contract.contact %></td>
+    <td><%= contract.start %></td>
+    <td><%= contract.duration_month %></td>
+    <td><%= contract.duration_years %></td>
+    <td><%= contract.interest_rate %></td>
+    <td><%= link_to 'Show', contract %></td>
+    <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+    <td><%= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contract', new_contract_path %>
