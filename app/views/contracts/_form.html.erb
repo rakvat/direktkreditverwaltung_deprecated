@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %><br />
+    <%= f.label "Nummer" %><br />
     <%= f.number_field :number %>
   </div>
   <div class="field">
-    <%= f.label :contact %><br />
+    <%= f.label "Kontakt" %><br />
     <%= f.text_field :contact %>
   </div>
   <div class="field">
@@ -24,15 +24,16 @@
     <%= f.date_select :start %>
   </div>
   <div class="field">
-    <%= f.label :duration_month %><br />
+    <%= f.label :name, "Laufzeit in Monaten" %><br />
     <%= f.number_field :duration_month %>
   </div>
   <div class="field">
-    <%= f.label :duration_years %><br />
+    <%= f.label :name, " * ODER * " %><br />
+    <%= f.label :name, "Laufzeit in Jahren" %><br />
     <%= f.number_field :duration_years %>
   </div>
   <div class="field">
-    <%= f.label :interest_rate %><br />
+    <%= f.label "Zinssatz" %><br />
     <%= f.text_field :interest_rate %>
   </div>
   <div class="actions">

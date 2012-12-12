@@ -1,8 +1,14 @@
 Direktkreditverwaltung::Application.routes.draw do
+  get "home/index"
+
   resources :contracts
 
 
   resources :contacts
+
+  root :to => "home#index"
+  
+  #match "/contract/create_for_contact:contact_id" => "contract#create_for_contact"
 
 
   # The priority is based upon order of creation:

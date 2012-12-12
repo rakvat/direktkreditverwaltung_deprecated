@@ -1,13 +1,13 @@
-<h1>Listing contracts</h1>
+<h1>Übersicht Direktkreditverträge</h1>
 
 <table>
   <tr>
-    <th>Number</th>
-    <th>Contact</th>
+    <th>Nummer</th>
+    <th>Kontakt</th>
     <th>Start</th>
-    <th>Duration month</th>
-    <th>Duration years</th>
-    <th>Interest rate</th>
+    <th>Laufzeit in Monaten</th>
+    <th>Laufzeit in Jahren</th>
+    <th>Zinssatz</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,9 +21,9 @@
     <td><%= contract.duration_month %></td>
     <td><%= contract.duration_years %></td>
     <td><%= contract.interest_rate %></td>
-    <td><%= link_to 'Show', contract %></td>
-    <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
-    <td><%= link_to 'Destroy', contract, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Anzeigen', contract %></td>
+    <td><%= link_to 'Editieren', edit_contract_path(contract) %></td>
+    <td><%= link_to 'Löschen', contract, method: :delete, data: { confirm: 'Sicher?' } %></td>
   </tr>
 <% end %>
 </table>
