@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208200852) do
+ActiveRecord::Schema.define(:version => 20121212192246) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20121208200852) do
     t.float    "interest_rate"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "comment"
+    t.string   "category"
   end
 
   add_index "contracts", ["contact_id"], :name => "index_contracts_on_contact_id"

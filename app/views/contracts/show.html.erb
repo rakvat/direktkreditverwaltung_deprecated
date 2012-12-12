@@ -30,6 +30,16 @@
   <%= @contract.interest_rate %>
 </p>
 
+<p>
+  <b>Kategorie:</b>
+  <%= @contract.category %>
+</p>
+
+<p>
+  <b>Bemerkung:</b>
+  <%= @contract.comment %>
+</p>
+
 
 <%= link_to 'Editieren', edit_contract_path(@contract) %> |
 <%= link_to 'Zurück', contracts_path %>

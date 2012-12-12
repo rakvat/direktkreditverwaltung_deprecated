@@ -62,7 +62,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.update_attributes(params[:contract])
-        format.html { redirect_to @contract, notice: 'Der Vertrag wurde erfolgreich aktualisier' }
+        format.html { redirect_to @contract, notice: 'Der Vertrag wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

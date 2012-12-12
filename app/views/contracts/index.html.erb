@@ -8,6 +8,8 @@
     <th>Laufzeit in Monaten</th>
     <th>Laufzeit in Jahren</th>
     <th>Zinssatz</th>
+    <th>Typ</th>
+    <th>Bemerkung</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +23,8 @@
     <td><%= contract.duration_month %></td>
     <td><%= contract.duration_years %></td>
     <td><%= contract.interest_rate %></td>
+    <td><%= contract.category %></td>
+    <td><%= contract.comment %></td>
     <td><%= link_to 'Anzeigen', contract %></td>
     <td><%= link_to 'Editieren', edit_contract_path(contract) %></td>
     <td><%= link_to 'Löschen', contract, method: :delete, data: { confirm: 'Sicher?' } %></td>
