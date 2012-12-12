@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Number:</b>
+  <b>Nummer:</b>
   <%= @contract.number %>
 </p>
 
 <p>
-  <b>Contact:</b>
-  <%= @contract.contact %>
+  <b>Kontakt:</b>
+  <%= "#{@contract.contact.prename} #{@contract.contact.name}" %>
 </p>
 
 <p>
@@ -16,20 +16,20 @@
 </p>
 
 <p>
-  <b>Duration month:</b>
+  <b>Laufzeit Monate:</b>
   <%= @contract.duration_month %>
 </p>
 
 <p>
-  <b>Duration years:</b>
+  <b>Laufzeit Jahre:</b>
   <%= @contract.duration_years %>
 </p>
 
 <p>
-  <b>Interest rate:</b>
+  <b>Zinssatz:</b>
   <%= @contract.interest_rate %>
 </p>
 
 
-<%= link_to 'Edit', edit_contract_path(@contract) %> |
-<%= link_to 'Back', contracts_path %>
+<%= link_to 'Editieren', edit_contract_path(@contract) %> |
+<%= link_to 'Zurück', contracts_path %>

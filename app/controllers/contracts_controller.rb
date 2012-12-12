@@ -24,8 +24,8 @@ class ContractsController < ApplicationController
   # GET /contracts/new
   # GET /contracts/new.json
   def new
+    @contact = Contact.find(params[:contact_id])
     @contract = Contract.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contract }
@@ -35,16 +35,18 @@ class ContractsController < ApplicationController
   # GET /contracts/1/edit
   def edit
     @contract = Contract.find(params[:id])
+    @contact = Contact.find(@contract.contact_id)
   end
 
   # POST /contracts
   # POST /contracts.json
   def create
-    @contract = Contract.new(params[:contract])
+    @contact = Contact.find(params[:contact_id])
+    @contract = @contact.contracts.create(params[:contract])
 
     respond_to do |format|
       if @contract.save
-        format.html { redirect_to @contract, notice: 'Contract was successfully created.' }
+        format.html { redirect_to @contract, notice: 'Der Vertrag wurde erfolgreich erstellt' }
         format.json { render json: @contract, status: :created, location: @contract }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.update_attributes(params[:contract])
-        format.html { redirect_to @contract, notice: 'Contract was successfully updated.' }
+        format.html { redirect_to @contract, notice: 'Der Vertrag wurde erfolgreich aktualisier' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -16,7 +16,7 @@
 <% @contracts.each do |contract| %>
   <tr>
     <td><%= contract.number %></td>
-    <td><%= contract.contact %></td>
+    <td><%= "#{contract.contact.prename} #{contract.contact.name}" %></td>
     <td><%= contract.start %></td>
     <td><%= contract.duration_month %></td>
     <td><%= contract.duration_years %></td>
@@ -28,6 +28,4 @@
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Contract', new_contract_path %>

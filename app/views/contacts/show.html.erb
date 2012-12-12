@@ -6,25 +6,24 @@
 </p>
 
 <p>
-  <b>Prename:</b>
+  <b>Vorname:</b>
   <%= @contact.prename %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b>Adresse:</b>
   <%= @contact.address %>
 </p>
 
 <p>
-  <b>Account number:</b>
+  <b>Kontonummer:</b>
   <%= @contact.account_number %>
 </p>
 
 <p>
-  <b>Bank number:</b>
+  <b>BLZ:</b>
   <%= @contact.bank_number %>
 </p>
 
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Editieren', edit_contact_path(@contact) %> |
+<%= link_to 'Zurück', contacts_path %>

@@ -3,10 +3,10 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Prename</th>
-    <th>Address</th>
-    <th>Account number</th>
-    <th>Bank number</th>
+    <th>Vorname</th>
+    <th>Adresse</th>
+    <th>Kontonummer</th>
+    <th>BLZ</th>
     <th></th>
     <th></th>
     <th></th>
@@ -20,17 +20,10 @@
     <td><%= contact.address %></td>
     <td><%= contact.account_number %></td>
     <td><%= contact.bank_number %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= #link_to 'Vertrag erstellen', 
-        #create_for_contact_contract_path(:contact_id => contact.id)
-        
-                                       # :controller => "contract", 
-                                       #  :action => "create_for_contact",
-                                       #  :contact_id => contact.id 
-        
-        %></td>
+    <td><%= link_to 'Anzeigen', contact %></td>
+    <td><%= link_to 'Editieren', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Löschen', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Vertrag erstellen', new_contact_contract_path(contact) %></td>
   </tr>
 <% end %>
 </table>
