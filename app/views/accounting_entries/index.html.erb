@@ -1,0 +1,26 @@
+<h1>Buchungsübersicht</h1>
+
+<table>
+  <tr>
+    <th>Vorgang</th>
+    <th>Datum</th>
+    <th>Betrag</th>
+    <th>Vertragsnummer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @accounting_entries.each do |accounting_entry| %>
+  <tr>
+    <td><%= accounting_entry.process %></td>
+    <td><%= accounting_entry.date %></td>
+    <td><%= accounting_entry.amount %></td>
+    <td><%= accounting_entry.contract.number %></td>
+    <td><%= link_to 'Anzeigen', accounting_entry %></td>
+    <td><%= link_to 'Editieren', edit_accounting_entry_path(accounting_entry) %></td>
+    <td><%= link_to 'Löschen', accounting_entry, method: :delete, data: { confirm: 'Sicher?' } %></td>
+  </tr>
+<% end %>
+</table>
+

@@ -22,7 +22,7 @@
     <td><%= contact.bank_number %></td>
     <td><%= link_to 'Anzeigen', contact %></td>
     <td><%= link_to 'Editieren', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Löschen', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Löschen', contact, method: :delete, data: { confirm: 'Sicher?' } %></td>
     <td><%= link_to 'Vertrag erstellen', new_contact_contract_path(contact) %></td>
   </tr>
 <% end %>
