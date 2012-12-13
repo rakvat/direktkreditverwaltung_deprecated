@@ -2,10 +2,23 @@ class AccountingEntriesController < ApplicationController
   # GET /accounting_entries
   # GET /accounting_entries.json
   def index
+    start_time = Date.new(1970,1,1)
+    end_time = DateTime.now.to_date
+    if params[:year]
+      start_time = Date.new(params[:year].to_i, 1, 1)
+      end_time = Date.new(params[:year].to_i, 12, 31)
+    elsif params[:start_date] && params[:end_date]
+      start_time = Date.new(params[:start_date][:year].to_i,
+                            params[:start_date][:month].to_i,
+                            params[:start_date][:day].to_i)
+      end_time = Date.new(params[:end_date][:year].to_i,
+                          params[:end_date][:month].to_i,
+                          params[:end_date][:day].to_i)
+    end
     if params[:contract_id]
-      @accounting_entries = AccountingEntry.where(:contract_id => params[:contract_id]).order("date")
+      @accounting_entries = AccountingEntry.where(:contract_id => params[:contract_id]).where(:date => start_time..end_time).order("date")
     else
-      @accounting_entries = AccountingEntry.order("date")
+      @accounting_entries = AccountingEntry.where(:date => start_time..end_time).order("date")
     end
 
     respond_to do |format|
@@ -46,8 +59,6 @@ class AccountingEntriesController < ApplicationController
   # POST /accounting_entries
   # POST /accounting_entries.json
   def create
-    #@contract = Contract.find(params[:contract_id])
-    #@accounting_entry = AccountingEntry.new(params[:accounting_entry])
     @contract = Contract.find(params[:contract_id])
     @accounting_entry = @contract.accounting_entries.create(params[:accounting_entry])
 
