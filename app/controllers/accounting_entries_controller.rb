@@ -2,7 +2,11 @@ class AccountingEntriesController < ApplicationController
   # GET /accounting_entries
   # GET /accounting_entries.json
   def index
-    @accounting_entries = AccountingEntry.all
+    if params[:contract_id]
+      @accounting_entries = AccountingEntry.where(:contract_id => params[:contract_id]).order("date")
+    else
+      @accounting_entries = AccountingEntry.order("date")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,7 +53,7 @@ class AccountingEntriesController < ApplicationController
 
     respond_to do |format|
       if @accounting_entry.save
-        format.html { redirect_to @accounting_entry, notice: 'Accounting entry was successfully created.' }
+        format.html { redirect_to @accounting_entry, notice: 'Die Buchung wurde erfolgreich aktualisiert.' }
         format.json { render json: @accounting_entry, status: :created, location: @accounting_entry }
       else
         format.html { render action: "new" }
