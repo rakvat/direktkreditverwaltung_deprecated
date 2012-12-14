@@ -4,6 +4,7 @@
   <tr>
     <th>Nummer</th>
     <th>Kontakt</th>
+    <th>Kontostand</th>
     <th>Start</th>
     <th>Laufzeit in Monaten</th>
     <th>Laufzeit in Jahren</th>
@@ -20,6 +21,7 @@
   <tr>
     <td><%= contract.number %></td>
     <td><%= "#{contract.contact.prename} #{contract.contact.name}" %></td>
+    <td><%= contract.balance %>€</td>
     <td><%= contract.start %></td>
     <td><%= contract.duration_month %></td>
     <td><%= contract.duration_years %></td>

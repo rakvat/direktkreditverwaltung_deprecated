@@ -3,9 +3,10 @@
 <% @contracts.each do |contract| %>
 <div>
   <b>Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %></b><br/>
-  Zinsen für das Jahr <%= @year %> (Zinssatz laut Vertrag <%= contract.interest_rate * 100  %>%):
+  Zinsen für das Jahr <%= @year %> (Zinssatz laut Vertrag <%= contract.interest_rate * 100  %>%): <br/>
+  <br/>
+  Kontostand: <%= contract.balance DateTime.now.to_date %>
 </div>
 <% end %>
-
 
 
