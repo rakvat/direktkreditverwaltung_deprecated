@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
   # GET /contracts
   # GET /contracts.json
   def index
-    @contracts = Contract.order("number")
+    @contracts = Contract.order(:number)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,6 +80,22 @@ class ContractsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to contracts_url }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /contracts/interest
+  def interest
+    puts "path to interest"
+    @contracts = []
+    if params[:contract]
+      @contracts = [params[:contract]]
+    elsif
+      @contracts = Contract.order(:number)      
+    end
+    @year = DateTime.now.to_date.year
+    respond_to do |format|
+      format.html 
+      format.json { render json: @contracts }
     end
   end
 end

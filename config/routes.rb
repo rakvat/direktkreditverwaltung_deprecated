@@ -2,6 +2,7 @@ Direktkreditverwaltung::Application.routes.draw do
 
 
   get "home/index"
+  get "contracts/interest"
 
   resources :accounting_entries
   
@@ -14,6 +15,7 @@ Direktkreditverwaltung::Application.routes.draw do
       resources :accounting_entries
     end  
   end
+
 
   root :to => "home#index"
   

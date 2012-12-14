@@ -1,0 +1,11 @@
+<h1>Zinsen für das Jahr <%= @year %></h1>
+
+<% @contracts.each do |contract| %>
+<div>
+  <b>Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %></b><br/>
+  Zinsen für das Jahr <%= @year %> (Zinssatz laut Vertrag <%= contract.interest_rate * 100  %>%):
+</div>
+<% end %>
+
+
+
