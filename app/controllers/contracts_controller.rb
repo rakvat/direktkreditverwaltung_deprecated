@@ -85,7 +85,6 @@ class ContractsController < ApplicationController
 
   # GET /contracts/interest
   def interest
-    puts "path to interest"
     @contracts = []
     if params[:contract]
       @contracts = [params[:contract]]
