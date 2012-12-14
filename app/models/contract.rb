@@ -7,11 +7,10 @@ class Contract < ActiveRecord::Base
 
   #account balance for given date
   def balance date = DateTime.now.to_date
-    entries = accounting_entries.where("date <= ?", date)
-    entries.inject(0) {|sum, entry| sum + entry[:amount]}
+    accounting_entries.where("date <= ?", date).sum(:amount)
   end
 
-  def interest_entries year = Date.now.to_date.year
+  def interest_entries year = Date.now.year
     start_date = Date.new(year, 1, 1)
     end_date = Date.new(year, 12, 31)
     days_in_year = end_date.yday - start_date.yday + 1
@@ -43,7 +42,7 @@ class Contract < ActiveRecord::Base
     interest_rows
   end
 
-  def interest year = Date.now.to_date.year
+  def interest year = Date.now.year
     rows = interest_entries year
     interest = rows.inject(0) {|sum, row| sum + row[:interest]}
     return interest, rows

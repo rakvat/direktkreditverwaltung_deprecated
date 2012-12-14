@@ -85,13 +85,14 @@ class ContractsController < ApplicationController
 
   # GET /contracts/interest
   def interest
+    params[:year] ||= DateTime.now.year
     @contracts = []
     if params[:contract]
       @contracts = [params[:contract]]
     elsif
       @contracts = Contract.order(:number)      
     end
-    @year = DateTime.now.to_date.year
+    @year = params[:year].to_i
     respond_to do |format|
       format.html 
       format.json { render json: @contracts }

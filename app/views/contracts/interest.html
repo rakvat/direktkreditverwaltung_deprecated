@@ -1,12 +1,20 @@
 <h1>Zinsen für das Jahr <%= @year %></h1>
 
+<h3>Jahr und Ausgabeformat</h3>
+
+<%= form_tag("/contracts/interest", :method => "get") do %>
+  <%= select_tag :year, options_for_select([2010, 2011, 2012]) %>
+  <%= submit_tag "ok" %>
+<% end %>
+
+
 <% @contracts.each do |contract| %>
 <div>
   <h2>Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %></h2>
-  <b>Kontostand <%= DateTime.now.to_date %>:</b> 
+  <b>Kontostand <%= DateTime.now.to_date %>:</b>
   <%= currency(contract.balance DateTime.now.to_date) %><br/>
   <br/>
-  <b>Zinsberechnung:</b><br/>
+  <b>Zinsberechnung <%= @year %>:</b><br/>
   <table>
     <tr>
       <th>Datum</th>
