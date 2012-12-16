@@ -8,6 +8,10 @@ Verwaltet
 * Verträge
 * Buchungen (in Planung)
 
+Erstellt
+* Kontoauszüge
+* Zinsberechnungen
+
 Geplant sind 
 * unterschiedliche Auswertungsansichten
 * Datenimport

@@ -3,7 +3,8 @@
 <h3>Jahr und Ausgabeformat</h3>
 
 <%= form_tag("/contracts/interest", :method => "get") do %>
-  <%= select_tag :year, options_for_select([2010, 2011, 2012]) %>
+  <%= select_tag :year, options_for_select([2010, 2011, 2012]) %> 
+  <%= select_tag :format, options_for_select(["html", "latex"]) %>
   <%= submit_tag "ok" %>
 <% end %>
 
@@ -22,7 +23,7 @@
       <th>Betrag</th>
       <th>Zinssatz</th>
       <th>verbleibende Tage im Jahr</th>
-      <th>verbleibender Anzeil am Jahr</th>
+      <th>verbleibender Anteil am Jahr</th>
       <th>Zinsen</th>
     </tr>
     <% interest, interest_calculation = contract.interest @year %>
