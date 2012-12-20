@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212194321) do
+ActiveRecord::Schema.define(:version => 20121220113144) do
 
   create_table "accounting_entries", :force => true do |t|
-    t.string   "process"
     t.date     "date"
     t.float    "amount"
     t.integer  "contract_id"

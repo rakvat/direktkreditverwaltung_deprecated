@@ -2,7 +2,7 @@
 
 <p>
   <b>Vorgang:</b>
-  <%= @accounting_entry.process %>
+  <%= @accounting_entry.amount > 0 ? "Einzahlung" : "Auszahlung" %>
 </p>
 
 <p>
