@@ -1,6 +1,12 @@
+# encoding: utf-8
+
 module ContractsHelper
   def currency value
     number_to_currency(value, :locale => :de)
+  end
+
+  def latex_currency value
+    number_to_currency(value, :locale => :de).gsub("€","\\euro")
   end
 
   def fraction value

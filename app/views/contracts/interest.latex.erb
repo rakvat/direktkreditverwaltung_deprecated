@@ -1,4 +1,4 @@
-\section{Zinsen f\"{u}r das Jahr <%= @year %>}
+\section{Zinsen für das Jahr <%= @year %>}
 
 <% sum_interest = 0 %>
 
@@ -6,28 +6,33 @@
 \subsection{Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %>}
 
 {\bf Kontostand <%= DateTime.now.to_date %>:}
-<%= currency(contract.balance DateTime.now.to_date) %>
+<%= latex_currency(contract.balance DateTime.now.to_date) %>
 
 {\bf Zinsberechnung <%= @year %>:}
 
-\begin{tabular}{lllllll}
+\vspace{0.4cm}
+\begin{tabular}{l|l|l|l|l|l|l}
 
-{\bf Datum}&{\bf Vorgang}&{\bf Betrag}&{\bf Zinssatz}&{\bf verbleibende Tage im Jahr}&{\bf verbleibender Anteil am Jahr}&{\bf Zinsen}\\
-
+{\bf Datum} & {\bf Vorgang} & {\bf Betrag} & {\bf Zinssatz} & 
+    {\bf verbleibende} & {\bf verbleibender}  & {\bf Zinsen}\\
+        &               &              &                & 
+    {\bf Tage im Jahr} & {\bf Anteil am Jahr} & \\
+\hline
 <% interest, interest_calculation = contract.interest @year %>
 <% interest_calculation.each do |entry| %> 
 
-<%= entry[:date] %>&<%= entry[:name] %>&<%= currency(entry[:amount]) %>&<%= fraction(entry[:interest_rate]).gsub("%","\\%") %>&<%= entry[:days_left_in_year] %>&<%= fraction(entry[:fraction_of_year]).gsub("%","\\%") %>&<%= currency(entry[:interest]) %>\\
+<%= entry[:date] %>&<%= entry[:name] %>&<%= latex_currency(entry[:amount]) %>&<%= fraction(entry[:interest_rate]).gsub("%","\\%") %>&<%= entry[:days_left_in_year] %>&<%= fraction(entry[:fraction_of_year]).gsub("%","\\%") %>&<%= latex_currency(entry[:interest]) %>\\
 <% end %> 
 \end{tabular}
 
-{\bf Zinsen <%= @year %>:} <%= currency(interest) %>
+\vspace{0.4cm}
+{\bf Zinsen <%= @year %>:} <%= latex_currency(interest) %>
 
 <% sum_interest += interest %>
 <% end %>
 
 \subsection{Summe Zinsen}
-{\bf <%= currency(sum_interest) %> }
+{\bf <%= latex_currency(sum_interest) %> }
 
 
 

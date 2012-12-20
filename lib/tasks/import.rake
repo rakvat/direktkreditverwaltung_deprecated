@@ -17,6 +17,7 @@ namespace :import do
   desc "import accounting_entries from csv file"
   #column headers should be: date amount contract_id
   #format of date should be YYYY-MM-DD
+  #format of amount should be n.nn 
   task :accounting_entries, [:file] => :environment do |t, args|
     file = args[:file]
     if !file
