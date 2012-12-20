@@ -28,7 +28,7 @@ class Contract < ActiveRecord::Base
                       :days_left_in_year => days_left, 
                       :fraction_of_year => fraction, 
                       :interest => interest}]
-    entries = accounting_entries.where(:date => start_date..end_date)
+    entries = accounting_entries.where(:date => start_date..end_date).order(:date)
     entries.each do |entry|
       days_left = days_in_year - entry[:date].yday + 1
       fraction = 1.0 * days_left/days_in_year

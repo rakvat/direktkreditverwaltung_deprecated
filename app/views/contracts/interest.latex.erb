@@ -1,5 +1,7 @@
 \section{Zinsen f\"{u}r das Jahr <%= @year %>}
 
+<% sum_interest = 0 %>
+
 <% @contracts.each do |contract| %>
 \subsection{Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %>}
 
@@ -21,6 +23,11 @@
 
 {\bf Zinsen <%= @year %>:} <%= currency(interest) %>
 
+<% sum_interest += interest %>
 <% end %>
+
+\subsection{Summe Zinsen}
+{\bf <%= currency(sum_interest) %> }
+
 
 

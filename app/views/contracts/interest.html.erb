@@ -8,6 +8,7 @@
   <%= submit_tag "ok" %>
 <% end %>
 
+<% sum_interest = 0 %>
 
 <% @contracts.each do |contract| %>
 <div>
@@ -44,6 +45,8 @@
   <b>Zinsen <%= @year %>: <%= currency(interest) %></b><br/>
   <br/><br/>
 </div>
+  <% sum_interest+=interest %>
 <% end %>
 
-
+<h2>Summe Zinsen</h2>
+<b><%= currency(sum_interest) %></b>
