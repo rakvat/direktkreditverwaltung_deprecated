@@ -5,6 +5,8 @@ class Contract < ActiveRecord::Base
   has_many :accounting_entries
   attr_accessible :duration_month, :duration_years, :interest_rate, :number, :start, :category, :comment
 
+  attr_accessor(:expiring)
+
   #account balance for given date
   def balance date = DateTime.now.to_date
     accounting_entries.where("date <= ?", date).sum(:amount)

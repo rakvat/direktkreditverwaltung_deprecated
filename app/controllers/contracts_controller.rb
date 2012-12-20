@@ -99,4 +99,20 @@ class ContractsController < ApplicationController
       format.latex 
     end
   end
+
+  # GET /contracts/expiring
+  def expiring
+    @contracts = Contract.all
+    @contracts.each do |contract|
+      duration_in_month = contract.duration_month || contract.duration_years * 12
+      contract.expiring = duration_in_month.months.since(contract.start)
+    end
+
+    @contracts.sort_by! {|contract| contract.expiring}
+
+    respond_to do |format|
+      format.html # expiring.html.erb
+      format.json { render json: @contracts }
+    end
+  end
 end

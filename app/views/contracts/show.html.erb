@@ -27,7 +27,7 @@
 
 <p>
   <b>Zinssatz:</b>
-  <%= @contract.interest_rate %>
+  <%= fraction(@contract.interest_rate) %>
 </p>
 
 <p>
@@ -42,4 +42,5 @@
 
 
 <%= link_to 'Editieren', edit_contract_path(@contract) %> |
-<%= link_to 'Zurück', contracts_path %>
+<%= link_to 'Zurück zu Verträgen', contracts_path %> |
+<%= link_to 'Zurück zu Kontakten', contacts_path %>

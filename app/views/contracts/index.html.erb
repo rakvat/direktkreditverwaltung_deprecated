@@ -25,7 +25,7 @@
     <td><%= contract.start %></td>
     <td><%= contract.duration_month %></td>
     <td><%= contract.duration_years %></td>
-    <td><%= contract.interest_rate %></td>
+    <td><%= fraction(contract.interest_rate) %></td>
     <td><%= contract.category %></td>
     <td><%= contract.comment %></td>
     <td><%= link_to 'Anzeigen', contract %></td>

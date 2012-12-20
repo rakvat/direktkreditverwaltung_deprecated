@@ -3,6 +3,7 @@ Direktkreditverwaltung::Application.routes.draw do
 
   get "home/index"
   get "contracts/interest"
+  get "contracts/expiring"
 
   resources :accounting_entries
   
