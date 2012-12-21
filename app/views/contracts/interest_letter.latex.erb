@@ -1,19 +1,35 @@
-
 <% @contracts.each do |contract| %>
-\subsection{Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %>}
 
-{\bf Kontostand <%= DateTime.now.to_date %>:}
-<%= latex_currency(contract.balance DateTime.now.to_date) %>
+\footnotesize{PinkePanke GmbH, Koloniestraße 57, 13359 Berlin}\\
 
-{\bf Zinsberechnung <%= @year %>:}
+<%= "#{contract.contact.prename} #{contract.contact.name}" %>\\
+<% address=contract.contact.address %>
+<%= address.split(",")[0] %>\\
+<%= address.split(",")[1] %>\\
+
+    Logo
+\textit{Projekt im Mietshäuser Syndikat}
+
+Koloniestraße 57\\
+13359 Berlin\\
+
+e-mail: kontakt@pinkepanke.net\\
+http://www.pinkepanke.net
+    
+\subsection{Kontostand Direktkreditvertrag Nr. <%= contract.number %>}
+
+Guten Tag <%= "#{contract.contact.prename} #{contract.contact.name}" %>,\\
+
+Der Kontostand des Direktkreditvertrags Nr. <%= contract.number %> beträgt heute, am <%= DateTime.now.to_date %>
+<%= latex_currency(contract.balance DateTime.now.to_date) %>. Die Zinsen für das Jahr <%= @year %> berechnen sich wie folgt:
 
 \vspace{0.4cm}
 \begin{tabular}{l|l|l|l|l|l|l}
 
-{\bf Datum} & {\bf Vorgang} & {\bf Betrag} & {\bf Zinssatz} & 
-    {\bf verbleibende} & {\bf verbleibender}  & {\bf Zinsen}\\
+\textbf{Datum} & \textbf{Vorgang} & \textbf{Betrag} & \textbf{Zinssatz} & 
+    \textbf{verbleibende} & \textbf{verbleibender}  & \textbf{Zinsen}\\
         &               &              &                & 
-    {\bf Tage im Jahr} & {\bf Anteil am Jahr} & \\
+    \textbf{Tage im Jahr} & \textbf{Anteil am Jahr} & \\
 \hline
 <% interest, interest_calculation = contract.interest @year %>
 <% interest_calculation.each do |entry| %> 
@@ -23,10 +39,35 @@
 \end{tabular}
 
 \vspace{0.4cm}
-{\bf Zinsen <%= @year %>:} <%= latex_currency(interest) %>
+\textbf{Zinsen <%= @year %>:} <%= latex_currency(interest) %>
+
+Wir werden die Zinsen in den nächsten Tagen auf das im Vertrag angegebene Konto überweisen. Bitte beachten Sie, dass Sie sich selbst um die Abführung von Kapitalertragssteuer und Solidaritätszuschlag kümmern sollten, da wir das nicht übernehmen können. \\
+
+Vielen Dank!\\
+\vspace{2\baselineskip}
+
+Mit freundlichen Grüßen\\
+
+\vspace{4\baselineskip}
+
+Katja Einsfeld\\
+für die PinkePanke GmbH\\
+
+
+\vfill
+
+\hrule
+\vspace{0.2cm}
+\begin{tabular}{lll}
+
+{\footnotesize GLS-Bank}                             & {\footnotesize Geschäftsführung}
+    & {\footnotesize Registergericht: HRB 130860 B} \\
+{\footnotesize BLZ 43060967 Konto-Nr.: 1123596400}   & {\footnotesize Christoph Jackel, Katja Einsfeld}
+    & {\footnotesize Steuernummer: 27/002/12732}
+
+\end{tabular}
 
 \newpage
 <% end %>
-
 
 

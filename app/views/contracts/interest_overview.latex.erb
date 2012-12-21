@@ -5,18 +5,18 @@
 <% @contracts.each do |contract| %>
 \subsection{Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %>}
 
-{\bf Kontostand <%= DateTime.now.to_date %>:}
+\textbf{Kontostand <%= DateTime.now.to_date %>:}
 <%= latex_currency(contract.balance DateTime.now.to_date) %>
 
-{\bf Zinsberechnung <%= @year %>:}
+\textbf{Zinsberechnung <%= @year %>:}
 
 \vspace{0.4cm}
 \begin{tabular}{l|l|l|l|l|l|l}
 
-{\bf Datum} & {\bf Vorgang} & {\bf Betrag} & {\bf Zinssatz} & 
-    {\bf verbleibende} & {\bf verbleibender}  & {\bf Zinsen}\\
+\textbf{Datum} & \textbf{Vorgang} & \textbf{Betrag} & \textbf{Zinssatz} & 
+    \textbf{verbleibende} & \textbf{verbleibender}  & \textbf{Zinsen}\\
         &               &              &                & 
-    {\bf Tage im Jahr} & {\bf Anteil am Jahr} & \\
+    \textbf{Tage im Jahr} & \textbf{Anteil am Jahr} & \\
 \hline
 <% interest, interest_calculation = contract.interest @year %>
 <% interest_calculation.each do |entry| %> 
@@ -26,13 +26,13 @@
 \end{tabular}
 
 \vspace{0.4cm}
-{\bf Zinsen <%= @year %>:} <%= latex_currency(interest) %>
+\textbf{Zinsen <%= @year %>:} <%= latex_currency(interest) %>
 
 <% sum_interest += interest %>
 <% end %>
 
 \subsection{Summe Zinsen}
-{\bf <%= latex_currency(sum_interest) %> }
+\textbf{<%= latex_currency(sum_interest) %> }
 
 
 
