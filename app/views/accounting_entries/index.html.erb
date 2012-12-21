@@ -26,7 +26,8 @@
 
 <h3>Einschränkung auf ein Jahr</h3>
 <%= form_tag( "/accounting_entries", :method => "get") do %>
-  <%= select_tag :year, options_for_select([2010, 2011, 2012]) %>
+  <% year = Date.current.year %>
+  <%= select_tag :year, options_for_select(((year-10)..year).to_a, year) %> 
   <%= submit_tag "nur dieses Jahr" %>
 <% end %>
 

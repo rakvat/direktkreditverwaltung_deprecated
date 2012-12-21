@@ -1,0 +1,32 @@
+
+<% @contracts.each do |contract| %>
+\subsection{Direktkreditvertrag Nr. <%= contract.number %>, <%= "#{contract.contact.prename} #{contract.contact.name}" %>}
+
+{\bf Kontostand <%= DateTime.now.to_date %>:}
+<%= latex_currency(contract.balance DateTime.now.to_date) %>
+
+{\bf Zinsberechnung <%= @year %>:}
+
+\vspace{0.4cm}
+\begin{tabular}{l|l|l|l|l|l|l}
+
+{\bf Datum} & {\bf Vorgang} & {\bf Betrag} & {\bf Zinssatz} & 
+    {\bf verbleibende} & {\bf verbleibender}  & {\bf Zinsen}\\
+        &               &              &                & 
+    {\bf Tage im Jahr} & {\bf Anteil am Jahr} & \\
+\hline
+<% interest, interest_calculation = contract.interest @year %>
+<% interest_calculation.each do |entry| %> 
+
+<%= entry[:date] %>&<%= entry[:name] %>&<%= latex_currency(entry[:amount]) %>&<%= fraction(entry[:interest_rate]).gsub("%","\\%") %>&<%= entry[:days_left_in_year] %>&<%= fraction(entry[:fraction_of_year]).gsub("%","\\%") %>&<%= latex_currency(entry[:interest]) %>\\
+<% end %> 
+\end{tabular}
+
+\vspace{0.4cm}
+{\bf Zinsen <%= @year %>:} <%= latex_currency(interest) %>
+
+\newpage
+<% end %>
+
+
+

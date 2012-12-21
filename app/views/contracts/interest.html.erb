@@ -3,8 +3,11 @@
 <h3>Jahr und Ausgabeformat</h3>
 
 <%= form_tag("/contracts/interest", :method => "get") do %>
-  <%= select_tag :year, options_for_select([2010, 2011, 2012]) %> 
-  <%= select_tag :format, options_for_select(["html", "latex"]) %>
+  <% year = Date.current.year %>
+  <%= select_tag :year, options_for_select(((year-10)..year).to_a, year) %> 
+  <%= select_tag :output, options_for_select({"HTML" => "html", 
+                                              "Übersicht (latex)" => "latex_overview", 
+                                              "Briefe (latex)" => "latex_letter"}, "html") %>
   <%= submit_tag "ok" %>
 <% end %>
 

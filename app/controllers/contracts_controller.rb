@@ -93,10 +93,18 @@ class ContractsController < ApplicationController
       @contracts = Contract.order(:number)      
     end
     @year = params[:year].to_i
+
+    if params[:output] && params[:output].index("latex") == 0
+      if params[:output] == "latex_overview"
+        render "interest_overview.latex" and return
+      elsif params[:output] == "latex_letter"
+        render "interest_letter.latex" and return
+      end
+    end
+
     respond_to do |format|
       format.html 
       format.json { render json: @contracts }
-      format.latex 
     end
   end
 
