@@ -98,7 +98,7 @@ class ContractsController < ApplicationController
       if params[:output] == "latex_overview"
         render "interest_overview.latex" and return
       elsif params[:output] == "latex_letter"
-        render "interest_letter.latex" and return
+        render "interest_letter.latex", :layout => "letter" and return
       end
     end
 

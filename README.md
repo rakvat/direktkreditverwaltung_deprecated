@@ -23,6 +23,7 @@ Import
 latex-Ausgabe
 * z.B. die Zinsauswertung lässt sich im latex-Format ausgeben. Diese kann dann gespeichert, modifiziert und mit latex, dvipdfm, ... weiter verarbeitet werden
 * es wurde kein pdf-export gewählt, um die Möglichkeit der latex-Datei-Manipulation zu bewahren
+* Templates für die Zinsbriefe befinden sich in /app/views/layouts und /app/views/contracts . Sie enden auf "_template". Kopiere die _template-Dateien in Dateien mit gleichem Namen jedoch ohne "_template" und ändere die die Dateien wo nötig.
 
 Geplant sind 
 * weitere Auswertungsansichten
