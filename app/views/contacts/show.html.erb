@@ -16,6 +16,16 @@
 </p>
 
 <p>
+  <b>E-Mail:</b>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <b>Telefon:</b>
+  <%= @contact.phone %>
+</p>
+
+<p>
   <b>Kontonummer:</b>
   <%= @contact.account_number %>
 </p>
@@ -23,6 +33,16 @@
 <p>
   <b>BLZ:</b>
   <%= @contact.bank_number %>
+</p>
+
+<p>
+  <b>Name der Bank:</b>
+  <%= @contact.bank_name %>
+</p>
+
+<p>
+  <b>Bemerkung</b>
+  <%= @contact.remark %>
 </p>
 
 <%= link_to 'Editieren', edit_contact_path(@contact) %> |

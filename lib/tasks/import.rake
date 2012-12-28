@@ -2,7 +2,7 @@ require 'csv'
 
 namespace :import do
   desc "import contacts from csv file"
-  #column headers should be: name prename address account_number bank_number
+  #column headers should be: name prename address account_number bank_number bank_name email phone remark (not all columns are needed)
   task :contacts, [:file] => :environment do |t, args|
     file = args[:file]
     if !file

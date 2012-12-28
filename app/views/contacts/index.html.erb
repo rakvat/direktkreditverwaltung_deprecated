@@ -5,8 +5,12 @@
     <th>Name</th>
     <th>Vorname</th>
     <th>Adresse</th>
+    <th>E-Mail</th>
+    <th>Telefon</th>
     <th>Kontonummer</th>
     <th>BLZ</th>
+    <th>Bankname</th>
+    <th>Bemerkung</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,8 +22,12 @@
     <td><%= contact.name %></td>
     <td><%= contact.prename %></td>
     <td><%= contact.address %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.phone %></td>
     <td><%= contact.account_number %></td>
     <td><%= contact.bank_number %></td>
+    <td><%= contact.bank_name %></td>
+    <td><%= contact.remark %></td>
     <td><%= link_to 'Anzeigen', contact %></td>
     <td><%= link_to 'Editieren', edit_contact_path(contact) %></td>
     <td><%= link_to 'Löschen', contact, method: :delete, data: { confirm: 'Sicher?' } %></td>
@@ -30,4 +38,4 @@
 
 <br />
 
-<%= link_to 'New Contact', new_contact_path %>
+<%= link_to 'Neuen Kontakt erstellen', new_contact_path %>
