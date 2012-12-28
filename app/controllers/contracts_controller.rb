@@ -108,11 +108,21 @@ class ContractsController < ApplicationController
     end
   end
 
-  # GET /contracts/interest
+  # GET /contracts/interest_transfer_list
   def interest_transfer_list
     params[:year] ||= DateTime.now.year
     @contracts = Contract.order(:number)      
     @year = params[:year].to_i
+
+    respond_to do |format|
+      format.html 
+      format.json { render json: @contracts }
+    end
+  end
+  
+  # GET /contracts/interest_average
+  def interest_average
+    @contracts = Contract.order(:number)      
 
     respond_to do |format|
       format.html 

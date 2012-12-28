@@ -1,0 +1,34 @@
+<h1>Berechnung des durchschnittlichen Zinssatz</h1>
+
+<% sum=AccountingEntry.sum(:amount) %>
+<h3>Aktuelle Summe aller Direktkredite: </h3> 
+<b><%= currency(sum) %></b><br/>
+
+<h3>Berechnung: </h3> 
+<table>
+<tr>
+  <th>Vertrag Nr</th>
+  <th>Name</th>
+  <th>Kontostand</th>
+  <th>Anteil an Gesamtsumme</th>
+  <th>Zinssatz</th>
+  <th>Relativer Zinssatz</th>
+</tr>
+<% rel_sum = 0 %>
+
+<% @contracts.each do |contract| %>
+<tr>
+  <td><%= contract.number %></td>
+  <td><%= "#{contract.contact.prename} #{contract.contact.name}" %></td>
+  <td><%= currency(balance=contract.balance) %></td>
+  <td><%= fraction(sum_fraction=balance/sum) %></td>
+  <td><%= fraction(contract.interest_rate) %></td>
+  <td><%= fraction(rel=sum_fraction * contract.interest_rate) %></td>
+</tr>
+  <% rel_sum+=rel %>
+<% end %>
+</table>
+<br/>
+
+<h3>Durchschnittlicher Zinssatz: </h3> 
+<h1><%= fraction(rel_sum) %></h1>
