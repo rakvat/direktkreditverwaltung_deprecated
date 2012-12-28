@@ -34,7 +34,7 @@
 
 \rhead{
     \begin{textblock*}{60mm}(131mm,13mm) 
-        \includegraphics[width=70mm,natwidth=300,natheight=86]{logo.jpg}\\
+        \includegraphics[width=70mm,natwidth=300,natheight=86]{gmbh_logo.jpg}\\
     \end{textblock*}
     \begin{textblock*}{60mm}(152mm,30mm) 
         \begin{flushleft}

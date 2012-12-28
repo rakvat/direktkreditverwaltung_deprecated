@@ -7,7 +7,8 @@
   <%= select_tag :year, options_for_select(((year-10)..year).to_a, year) %> 
   <%= select_tag :output, options_for_select({"HTML" => "html", 
                                               "Übersicht (latex)" => "latex_overview", 
-                                              "Briefe (latex)" => "latex_letter"}, "html") %>
+                                              "Zinsbriefe (latex)" => "latex_interest_letter", 
+                                              "Dankesbriefe (latex)" => "latex_thanks_letter"}, "html") %>
   <%= submit_tag "ok" %>
 <% end %>
 
