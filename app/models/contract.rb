@@ -41,13 +41,14 @@ class Contract < ActiveRecord::Base
     fraction = days_left/days_in_year
     interest_rate = interest_rate_for_date start_date
     interest = start_balance * fraction * interest_rate
-    interest_rows = [{:date => start_date, 
-                      :name => "Saldo", 
-                      :amount => start_balance,
-                      :interest_rate => interest_rate, 
-                      :days_left_in_year => days_left, 
-                      :fraction_of_year => fraction, 
-                      :interest => interest}]
+    interest_rows = []
+    interest_rows.push({:date => start_date, 
+                        :name => "Saldo", 
+                        :amount => start_balance,
+                        :interest_rate => interest_rate, 
+                        :days_left_in_year => days_left, 
+                        :fraction_of_year => fraction, 
+                        :interest => interest})
     entries = accounting_entries.where(:date => start_date..end_date).order(:date)
     entries.each do |entry|
       days_left = days_in_year - entry[:date].yday + 1
@@ -66,11 +67,14 @@ class Contract < ActiveRecord::Base
       return interest_rows
     end
     contract_versions.each do |version|
-      if version.start.year == year
+      if version.start.year == year && !(version.start.month == 1 && version.start.day == 1)
         change_balance = balance(version.start)
         old_interest_rate = interest_rate_for_date(Date.new(version.start.year, 
                                                             version.start.month, 
                                                             version.start.day)-1)
+        if old_interest_rate == version.interest_rate
+          next
+        end
         days_left = days_in_year - version.start + 1
         fraction = 1.0 * days_left/days_in_year
         interest = -change_balance * fraction * old_interest_rate
@@ -94,6 +98,7 @@ class Contract < ActiveRecord::Base
     interest_rows
   end
 
+  # XXX refactor with interest_entries_act_act
   def interest_entries_30E_360 year = Date.now.year
     start_date = Date.new(year, 1, 1)
     end_date = Date.new(year, 12, 31)
@@ -101,13 +106,14 @@ class Contract < ActiveRecord::Base
 
     interest_rate = interest_rate_for_date start_date
     interest = start_balance * interest_rate
-    interest_rows = [{:date => start_date, 
-                      :name => "Saldo", 
-                      :amount => start_balance,
-                      :interest_rate => interest_rate, 
-                      :days_left_in_year => 360, 
-                      :fraction_of_year => 1, 
-                      :interest => interest}]
+    interest_rows = []
+    interest_rows.push({:date => start_date, 
+                        :name => "Saldo", 
+                        :amount => start_balance,
+                        :interest_rate => interest_rate, 
+                        :days_left_in_year => 360, 
+                        :fraction_of_year => 1, 
+                        :interest => interest})
     entries = accounting_entries.where(:date => start_date..end_date).order(:date)
     entries.each do |entry|
       days_left = days360(entry[:date], end_date)
@@ -126,11 +132,14 @@ class Contract < ActiveRecord::Base
       return interest_rows
     end
     contract_versions.each do |version|
-      if version.start.year == year
+      if version.start.year == year && !(version.start.month == 1 && version.start.day == 1)
         change_balance = balance(version.start)
         old_interest_rate = interest_rate_for_date(Date.new(version.start.year, 
                                                             version.start.month, 
                                                             version.start.day)-1)
+        if old_interest_rate == version.interest_rate
+          next
+        end
         days_left = days360(version.start, end_date)
         fraction = 1.0 * days_left/360
         interest = -change_balance * fraction * old_interest_rate
