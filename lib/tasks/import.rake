@@ -27,7 +27,7 @@ namespace :import do
     CSV.foreach(file, :headers => true) do |row|
       contract = Contract.where(:number => row.to_hash["contract_id"]).first
       if !contract
-        puts "contract for contract_id #{row.to_hash[:contract_id]} could nod be found"
+        puts "contract for contract_id #{row.to_hash[:contract_id]} could not be found"
         next
       end
       entry = AccountingEntry.new
