@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230095402) do
+ActiveRecord::Schema.define(:version => 20121230125529) do
 
   create_table "accounting_entries", :force => true do |t|
     t.date     "date"
@@ -53,12 +53,9 @@ ActiveRecord::Schema.define(:version => 20121230095402) do
   create_table "contracts", :force => true do |t|
     t.integer  "number"
     t.integer  "contact_id"
-    t.date     "start"
-    t.integer  "duration_month"
-    t.integer  "duration_years"
     t.float    "interest_rate"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "comment"
     t.string   "category"
   end

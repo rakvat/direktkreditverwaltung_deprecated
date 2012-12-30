@@ -13,6 +13,13 @@ class Contract < ActiveRecord::Base
     accounting_entries.where("date <= ?", date).sum(:amount)
   end
 
+  #XXX: find better query and do it in controller, making last_version an alias
+  # in the contract table
+  def last_version
+    contract_versions.where("start = ? AND contract_id = ?", 
+      ContractVersion.where("contract_id = ?", id).maximum(:start), id).first
+  end
+
   def interest_entries_act_act year = Date.now.year
     start_date = Date.new(year, 1, 1)
     end_date = Date.new(year, 12, 31)
