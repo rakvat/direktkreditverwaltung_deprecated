@@ -1,4 +1,6 @@
+
 class ContractVersionsController < ApplicationController
+
   # GET /contract_versions
   # GET /contract_versions.json
   def index

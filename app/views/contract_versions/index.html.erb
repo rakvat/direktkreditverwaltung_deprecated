@@ -22,7 +22,7 @@
     <td><%= contract_version.start %></td>
     <td><%= contract_version.duration_months %></td>
     <td><%= contract_version.duration_years %></td>
-    <td><%= (contract_version.interest_rate) %></td>
+    <td><%= fraction(contract_version.interest_rate) %></td>
     <td><%= link_to 'Anzeigen', contract_version %></td>
     <td><%= link_to 'Editieren', edit_contract_version_path(contract_version) %></td>
     <td><%= link_to 'Löschen', contract_version, method: :delete, data: { confirm: 'Sicher?' } %></td>

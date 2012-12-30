@@ -48,6 +48,7 @@ namespace :import do
           contract_version.start = contract.start
           contract_version.duration_months = contract.duration_month
           contract_version.duration_years = contract.duration_years
+          contract_version.interest_rate = contract.interest_rate
           contract_version.save
       end
   end
