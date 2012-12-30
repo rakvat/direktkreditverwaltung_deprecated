@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Contract < ActiveRecord::Base
   # contract representing one account
 
@@ -60,6 +62,35 @@ class Contract < ActiveRecord::Base
                           :fraction_of_year => fraction,
                           :interest => interest})
     end
+    if contract_versions.length == 1
+      return interest_rows
+    end
+    contract_versions.each do |version|
+      if version.start.year == year
+        change_balance = balance(version.start)
+        old_interest_rate = interest_rate_for_date(Date.new(version.start.year, 
+                                                            version.start.month, 
+                                                            version.start.day)-1)
+        days_left = days_in_year - version.start + 1
+        fraction = 1.0 * days_left/days_in_year
+        interest = -change_balance * fraction * old_interest_rate
+        interest_rows.push({:date => version.start,
+                            :name => "Vertragsänderung",
+                            :amount => -change_balance,
+                            :interest_rate => old_interest_rate,
+                            :days_left_in_year => days_left,
+                            :fraction_of_year => fraction,
+                            :interest => interest})
+        interest = change_balance * fraction * version.interest_rate
+        interest_rows.push({:date => version.start,
+                            :name => "Vertragsänderung",
+                            :amount => change_balance,
+                            :interest_rate => version.interest_rate,
+                            :days_left_in_year => days_left,
+                            :fraction_of_year => fraction,
+                            :interest => interest})
+      end
+    end
     interest_rows
   end
 
@@ -90,6 +121,35 @@ class Contract < ActiveRecord::Base
                           :days_left_in_year => days_left,
                           :fraction_of_year => fraction,
                           :interest => interest})
+    end
+    if contract_versions.length == 1
+      return interest_rows
+    end
+    contract_versions.each do |version|
+      if version.start.year == year
+        change_balance = balance(version.start)
+        old_interest_rate = interest_rate_for_date(Date.new(version.start.year, 
+                                                            version.start.month, 
+                                                            version.start.day)-1)
+        days_left = days360(version.start, end_date)
+        fraction = 1.0 * days_left/360
+        interest = -change_balance * fraction * old_interest_rate
+        interest_rows.push({:date => version.start,
+                            :name => "Vertragsänderung",
+                            :amount => -change_balance,
+                            :interest_rate => old_interest_rate,
+                            :days_left_in_year => days_left,
+                            :fraction_of_year => fraction,
+                            :interest => interest})
+        interest = change_balance * fraction * version.interest_rate
+        interest_rows.push({:date => version.start,
+                            :name => "Vertragsänderung",
+                            :amount => change_balance,
+                            :interest_rate => version.interest_rate,
+                            :days_left_in_year => days_left,
+                            :fraction_of_year => fraction,
+                            :interest => interest})
+      end
     end
     interest_rows
   end
