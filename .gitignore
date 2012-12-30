@@ -19,6 +19,7 @@
 .*swo
 .*swa
 
+/config/settings.yml
 /app/views/layouts/a5note.latex.erb
 /app/views/layouts/letter.latex.erb
 /app/views/contracts/interest_letter.latex.erb

@@ -12,4 +12,5 @@ module ContractsHelper
   def fraction value
     number_to_percentage(value * 100)
   end
+
 end

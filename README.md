@@ -3,6 +3,9 @@ Direktkreditverwaltung
 
 Nach Erfordernissen eines Mietshäuser Syndikat Projekts.
 
+Zinsberechnung nach der "Deutschen Methode" 30/360 (mit der days360-Methode nach "The European Method (30E/360)")(ich finde es auch schrecklich, aber so ist es üblich). Siehe http://de.wikipedia.org/wiki/Zinssatz#Berechnungsmethoden und http://en.wikipedia.org/wiki/360-day_calendar
+Die Berechnungsmethode kann durch Editieren von config/settings.yml auf act_act geändert werden.
+
 Verwaltet
 * Kontaktdaten
 * Verträge

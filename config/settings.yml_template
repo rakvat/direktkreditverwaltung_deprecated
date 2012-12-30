@@ -1,0 +1,1 @@
+interest_calculation_method: "30E_360" #one of: "act_act" "30E_360", defaults to "30E_360"
