@@ -3,6 +3,7 @@ class Contract < ActiveRecord::Base
 
   belongs_to :contact
   has_many :accounting_entries
+  has_many :contract_versions
   attr_accessible :duration_month, :duration_years, :interest_rate, :number, :start, :category, :comment
 
   attr_accessor(:expiring)

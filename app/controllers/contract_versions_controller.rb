@@ -46,7 +46,7 @@ class ContractVersionsController < ApplicationController
   # POST /contract_versions.json
   def create
     @contract = Contract.find(params[:contract_id])
-    @contract_version = ContractVersion.new(params[:contract_version])
+    @contract_version = @contract.contract_versions.create(params[:contract_version])
 
     respond_to do |format|
       if @contract_version.save
