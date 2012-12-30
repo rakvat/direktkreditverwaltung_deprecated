@@ -13,10 +13,20 @@ class Contract < ActiveRecord::Base
   end
 
   #XXX: find better query and do it in controller, making last_version an alias
-  # in the contract table
+  # in the contract table (if better?)
   def last_version
-    contract_versions.where("start = ? AND contract_id = ?", 
-      ContractVersion.where("contract_id = ?", id).maximum(:start), id).first
+    contract_versions.where("start = ?", contract_versions.maximum(:start)).first
+  end
+
+  def interest_rate_for_date date
+    versions = contract_versions.order(:start).reverse_order
+    versions.each do |version|
+      if version.start <= date
+        return version.interest_rate
+      end
+    end
+    logger.warn "date before start date of first contract version. Returning interest_rate = 0"
+    return 0.0
   end
 
   def interest_entries_act_act year = Date.now.year
@@ -27,6 +37,7 @@ class Contract < ActiveRecord::Base
 
     days_left = days_in_year
     fraction = days_left/days_in_year
+    interest_rate = interest_rate_for_date start_date
     interest = start_balance * fraction * interest_rate
     interest_rows = [{:date => start_date, 
                       :name => "Saldo", 
@@ -39,6 +50,7 @@ class Contract < ActiveRecord::Base
     entries.each do |entry|
       days_left = days_in_year - entry[:date].yday + 1
       fraction = 1.0 * days_left/days_in_year
+      interest_rate = interest_rate_for_date entry[:date]
       interest = entry[:amount] * fraction * interest_rate
       interest_rows.push({:date => entry[:date],
                           :name => entry[:amount] > 0 ? "Einzahlung" : "Auszahlung",
@@ -56,6 +68,7 @@ class Contract < ActiveRecord::Base
     end_date = Date.new(year, 12, 31)
     start_balance = balance(start_date)
 
+    interest_rate = interest_rate_for_date start_date
     interest = start_balance * interest_rate
     interest_rows = [{:date => start_date, 
                       :name => "Saldo", 
@@ -68,6 +81,7 @@ class Contract < ActiveRecord::Base
     entries.each do |entry|
       days_left = days360(entry[:date], end_date)
       fraction = 1.0 * days_left/360
+      interest_rate = interest_rate_for_date entry[:date]
       interest = entry[:amount] * fraction * interest_rate
       interest_rows.push({:date => entry[:date],
                           :name => entry[:amount] > 0 ? "Einzahlung" : "Auszahlung",
@@ -121,5 +135,4 @@ class Contract < ActiveRecord::Base
 
     return days
   end 
-
 end 

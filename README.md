@@ -9,6 +9,7 @@ Die Berechnungsmethode kann durch Editieren von config/settings.yml auf act_act 
 Verwaltet
 * Kontaktdaten
 * Verträge
+* Versionen von Verträgen (Laufzeiten und Zinssatz kann sich ändern)
 * Buchungen
 
 Erstellt
@@ -30,6 +31,8 @@ latex-Ausgabe
 * Parameter für dvipdfm: -p a4 (Papiergröße), -l (Landscape mode für Dankesbriefe) 
 
 Geplant sind 
-* Unterstützung für veränderte Direktkreditverträge (Zinssatzänderung)
 * Graphen
+
+Bekannte Fehler
+* Löschen von Verträgen sollte Vertragsversionen, Buchungen, ... mitlöschen
 
