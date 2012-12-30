@@ -11,26 +11,27 @@
     </div>
   <% end %>
 
+  <% last_version = @contract.last_version || @new_contract_dummy %><br/>
   <div class="field">
     <%= f.label "Nummer" %><br />
     <%= f.number_field :number %>
   </div>
   <div class="field">
-    <%= f.label :start %><br />
-    <%= f.date_select :start %>
+    <%= f.label :name, "Start (letzte Version)" %><br />
+    <%= date_select("last_version_start", "", :default => last_version.start.to_date) %>
   </div>
   <div class="field">
-    <%= f.label :name, "Laufzeit in Monaten" %><br />
-    <%= f.number_field :duration_month %>
+    <%= f.label :name, "Laufzeit in Monaten (letzte Version)" %><br />
+    <%= number_field_tag :last_version_duration_months, last_version.duration_months %>
   </div>
   <div class="field">
     <%= f.label :name, " * ODER * " %><br />
-    <%= f.label :name, "Laufzeit in Jahren" %><br />
-    <%= f.number_field :duration_years %>
+    <%= f.label :name, "Laufzeit in Jahren (letzte Version)" %><br />
+    <%= number_field_tag :last_version_duration_years, last_version.duration_years%>
   </div>
   <div class="field">
-    <%= f.label "Zinssatz" %><br />
-    <%= f.text_field :interest_rate %>
+    <%= f.label :name,  "Zinssatz (letzte Version)" %><br />
+    <%= text_field_tag :last_version_interest_rate, last_version.interest_rate %>
   </div>
   <div class="field">
     <%= f.label :name, "Kategorie (Privat, Syndikat, Dritte)" %><br />

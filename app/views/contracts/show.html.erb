@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+(zeigt Start, Laufzeit und Zinssatz der letzen Version des Vertrags)
+
 <p>
   <b>Nummer:</b>
   <%= @contract.number %>
@@ -12,22 +14,22 @@
 
 <p>
   <b>Start:</b>
-  <%= @contract.start %>
+  <%= @contract.last_version.start %>
 </p>
 
 <p>
   <b>Laufzeit Monate:</b>
-  <%= @contract.duration_month %>
+  <%= @contract.last_version.duration_months %>
 </p>
 
 <p>
   <b>Laufzeit Jahre:</b>
-  <%= @contract.duration_years %>
+  <%= @contract.last_version.duration_years %>
 </p>
 
 <p>
   <b>Zinssatz:</b>
-  <%= fraction(@contract.interest_rate) %>
+  <%= fraction(@contract.last_version.interest_rate) %>
 </p>
 
 <p>
