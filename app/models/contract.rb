@@ -187,7 +187,7 @@ class Contract < ActiveRecord::Base
     days = [0,(month2 - month1 - 1)].max * 30  #full months
     
     if (month1 == month2) 
-      days += day2 - day1
+      days += [30,day2].min - day1
     else
       days += [30,day2].min
       days += 30 - [30,day1].min
