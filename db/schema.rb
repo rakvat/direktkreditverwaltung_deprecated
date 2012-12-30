@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228000247) do
+ActiveRecord::Schema.define(:version => 20121230095402) do
 
   create_table "accounting_entries", :force => true do |t|
     t.date     "date"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20121228000247) do
     t.string   "remark"
     t.string   "bank_name"
   end
+
+  create_table "contract_versions", :force => true do |t|
+    t.date     "start"
+    t.integer  "duration_months"
+    t.integer  "duration_years"
+    t.float    "interest_rate"
+    t.integer  "version"
+    t.integer  "contract_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "contract_versions", ["contract_id"], :name => "index_contract_versions_on_contract_id"
 
   create_table "contracts", :force => true do |t|
     t.integer  "number"

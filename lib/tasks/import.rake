@@ -37,6 +37,20 @@ namespace :import do
       entry.save
     end
   end
+
+  desc "contract2contractversion"
+  task :contract_versions => :environment do
+      contracts = Contract.all
+      contracts.each do |contract|
+          contract_version = ContractVersion.new
+          contract_version.contract = contract
+          contract_version.version = 1
+          contract_version.start = contract.start
+          contract_version.duration_months = contract.duration_month
+          contract_version.duration_years = contract.duration_years
+          contract_version.save
+      end
+  end
 end
 
 

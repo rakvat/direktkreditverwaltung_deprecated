@@ -1,6 +1,9 @@
 Direktkreditverwaltung::Application.routes.draw do
 
 
+  resources :contract_versions
+
+
   get "home/index"
   get "contracts/interest"
   get "contracts/interest_transfer_list"

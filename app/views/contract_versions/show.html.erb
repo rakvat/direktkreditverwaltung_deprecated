@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start:</b>
+  <%= @contract_version.start %>
+</p>
+
+<p>
+  <b>Duration months:</b>
+  <%= @contract_version.duration_months %>
+</p>
+
+<p>
+  <b>Duration years:</b>
+  <%= @contract_version.duration_years %>
+</p>
+
+<p>
+  <b>Interest rate:</b>
+  <%= @contract_version.interest_rate %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @contract_version.version %>
+</p>
+
+<p>
+  <b>Contract:</b>
+  <%= @contract_version.contract %>
+</p>
+
+
+<%= link_to 'Edit', edit_contract_version_path(@contract_version) %> |
+<%= link_to 'Back', contract_versions_path %>
