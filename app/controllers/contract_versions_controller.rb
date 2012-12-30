@@ -28,8 +28,8 @@ class ContractVersionsController < ApplicationController
   # GET /contract_versions/new
   # GET /contract_versions/new.json
   def new
+    @contract = Contract.find(params[:contract_id])
     @contract_version = ContractVersion.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contract_version }
@@ -39,16 +39,18 @@ class ContractVersionsController < ApplicationController
   # GET /contract_versions/1/edit
   def edit
     @contract_version = ContractVersion.find(params[:id])
+    @contract = Contract.find(@contract_version.contract_id)
   end
 
   # POST /contract_versions
   # POST /contract_versions.json
   def create
+    @contract = Contract.find(params[:contract_id])
     @contract_version = ContractVersion.new(params[:contract_version])
 
     respond_to do |format|
       if @contract_version.save
-        format.html { redirect_to @contract_version, notice: 'Contract version was successfully created.' }
+        format.html { redirect_to @contract_version, notice: 'Vertragsversion wurde erfolgreich erstellt.' }
         format.json { render json: @contract_version, status: :created, location: @contract_version }
       else
         format.html { render action: "new" }
@@ -64,7 +66,7 @@ class ContractVersionsController < ApplicationController
 
     respond_to do |format|
       if @contract_version.update_attributes(params[:contract_version])
-        format.html { redirect_to @contract_version, notice: 'Contract version was successfully updated.' }
+        format.html { redirect_to @contract_version, notice: 'Vertragsversion wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

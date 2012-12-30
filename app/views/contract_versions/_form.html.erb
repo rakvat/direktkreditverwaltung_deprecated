@@ -1,4 +1,4 @@
-<%= form_for(@contract_version) do |f| %>
+<%= form_for([@contract, @contract_version]) do |f| %>
   <% if @contract_version.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contract_version.errors.count, "error") %> prohibited this contract_version from being saved:</h2>
@@ -12,30 +12,27 @@
   <% end %>
 
   <div class="field">
+    <%= f.label "Versionsnummer" %><br />
+    <%= f.number_field :version %>
+  </div>
+  <div class="field">
     <%= f.label :start %><br />
     <%= f.date_select :start %>
   </div>
   <div class="field">
-    <%= f.label :duration_months %><br />
+    <%= f.label :name, "Laufzeit in Monaten" %><br />
     <%= f.number_field :duration_months %>
   </div>
   <div class="field">
-    <%= f.label :duration_years %><br />
+    <%= f.label :name, " * ODER * " %><br />
+    <%= f.label :name, "Laufzeit in Jahren" %><br />
     <%= f.number_field :duration_years %>
   </div>
   <div class="field">
-    <%= f.label :interest_rate %><br />
-    <%= f.number_field :interest_rate %>
-  </div>
-  <div class="field">
-    <%= f.label :version %><br />
-    <%= f.number_field :version %>
-  </div>
-  <div class="field">
-    <%= f.label :contract %><br />
-    <%= f.text_field :contract %>
+    <%= f.label "Zinssatz" %><br />
+    <%= f.text_field :interest_rate %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Fertig" %>
   </div>
 <% end %>

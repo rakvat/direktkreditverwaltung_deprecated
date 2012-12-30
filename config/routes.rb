@@ -14,6 +14,7 @@ Direktkreditverwaltung::Application.routes.draw do
   
   resources :contracts do
     resources :accounting_entries
+    resources :contract_versions
   end
 
   resources :contacts do
