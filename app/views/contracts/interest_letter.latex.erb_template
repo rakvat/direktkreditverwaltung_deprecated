@@ -37,6 +37,7 @@ Der Kontostand des Direktkreditvertrags Nr. <%= contract.number %> beträgt heut
 <%= latex_currency(contract.balance DateTime.now.to_date) %>. Die Zinsen für das Jahr <%= @year %> berechnen sich wie folgt:
 
 \vspace{0.4cm}
+\begin{small}
 \begin{tabular}{l|l|l|l|l|l|l}
 
 \textbf{Datum} & \textbf{Vorgang} & \textbf{Betrag} & \textbf{Zinssatz} & 
@@ -50,6 +51,7 @@ Der Kontostand des Direktkreditvertrags Nr. <%= contract.number %> beträgt heut
 <%= entry[:date] %>&<%= entry[:name] %>&<%= latex_currency(entry[:amount]) %>&<%= fraction(entry[:interest_rate]).gsub("%","\\%") %>&<%= entry[:days_left_in_year] %>&<%= fraction(entry[:fraction_of_year]).gsub("%","\\%") %>&<%= latex_currency(entry[:interest]) %>\\
 <% end %> 
 \end{tabular}
+\end{small}
 
 \vspace{0.4cm}
 \textbf{Zinsen <%= @year %>:} <%= latex_currency(interest) %>\\
