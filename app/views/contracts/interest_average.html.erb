@@ -17,13 +17,14 @@
 <% rel_sum = 0 %>
 
 <% @contracts.each do |contract| %>
+<% last_version = contract.last_version %>
 <tr>
   <td><%= contract.number %></td>
   <td><%= "#{contract.contact.prename} #{contract.contact.name}" %></td>
   <td><%= currency(balance=contract.balance) %></td>
   <td><%= fraction(sum_fraction=balance/sum) %></td>
-  <td><%= fraction(contract.interest_rate) %></td>
-  <td><%= fraction(rel=sum_fraction * contract.interest_rate) %></td>
+  <td><%= fraction(last_version.interest_rate) %></td>
+  <td><%= fraction(rel=sum_fraction * last_version.interest_rate) %></td>
 </tr>
   <% rel_sum+=rel %>
 <% end %>

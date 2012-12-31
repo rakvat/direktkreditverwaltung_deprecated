@@ -165,8 +165,9 @@ class ContractsController < ApplicationController
   def expiring
     @contracts = Contract.all
     @contracts.each do |contract|
-      duration_in_month = contract.duration_month || contract.duration_years * 12
-      contract.expiring = duration_in_month.months.since(contract.start)
+      last_version = contract.last_version
+      duration_in_month = last_version.duration_months || last_version.duration_years * 12
+      contract.expiring = duration_in_month.months.since(last_version.start)
     end
 
     @contracts.sort_by! {|contract| contract.expiring}

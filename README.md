@@ -35,5 +35,4 @@ Geplant sind
 
 Bekannte Fehler
 * Löschen von Verträgen sollte Vertragsversionen, Buchungen, ... mitlöschen
-* Durchschnittlicher Zinssatz und Auslaufende Verträge sind nach dem Vertragsversionsumbau noch nicht angepasst
 
