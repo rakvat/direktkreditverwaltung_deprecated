@@ -1,0 +1,15 @@
+= link_to "Home", root_path, :class => 'brand'
+%ul.nav
+  %li= link_to "Kontakte", contacts_path
+  %li= link_to "Direktkreditverträge", contracts_path
+  %li= link_to "Versionen der Verträge", contract_versions_path
+  %li= link_to "Alle Buchungen", accounting_entries_path
+  %li.dropdown
+    %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+      Auswertungen
+      %b.caret
+    %ul.dropdown-menu
+      %li= link_to "Zinsen", contracts_interest_path
+      %li= link_to "Zinsüberweisungsliste", contracts_interest_transfer_list_path
+      %li= link_to "Durchschnittlicher Zinssatz", contracts_interest_average_path
+      %li= link_to "Auslaufende Verträge", contracts_expiring_path
