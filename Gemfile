@@ -9,6 +9,14 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  gem 'timecop'
+  gem 'test-unit'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
