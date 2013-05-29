@@ -10,6 +10,7 @@ gem 'bootstrap-sass'
 gem 'haml-rails'
 
 group :test do
+  gem 'cucumber', '=1.2.5' #to use debugger in rubymine
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
