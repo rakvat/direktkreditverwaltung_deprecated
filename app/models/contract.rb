@@ -163,7 +163,7 @@ class Contract < ActiveRecord::Base
     interest_rows
   end
 
-  def interest year = Date.now.year
+  def interest year = Time.now.year
     if SETTINGS[:interest_calculation_method] &&
         SETTINGS[:interest_calculation_method] == "act_act"
       rows = interest_entries_act_act year
