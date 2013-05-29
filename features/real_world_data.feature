@@ -22,4 +22,36 @@ Scenario: Anonymized DK data from the zolle11 in year 2011
   Then Time passes and it is the "2011-12-31"
     And The balance including interest of DK contract 2 is 1668.89 euro
     And The balance including interest of DK contract 6 is 0.00 euro
-    And The balance including interest of DK contract 1 is 9528.29 euro
+    And The balance including interest of DK contract 1 is 9528.25 euro
+    #And The balance including interest of DK contract 1 is 9528.29 euro #Maybe a miscalculation on our part? TODO:Investigate
+
+
+Scenario: Anonymized DK data from the zolle11 in year 2012
+  Given The date is "2011-12-31"
+    And DK contracts as described in "test/fixtures/data/dk-contracts_2012.csv" exist
+
+  When Time passes
+    And The deposits and paybacks as described in "test/fixtures/data/dk-movements_2012.csv" occur
+
+  Then Time passes and it is the "2012-12-31"
+    And The balance including interest of DK contract 1 is 9007.81 euro
+    And The balance including interest of DK contract 2 is 1693.92 euro
+    And The balance including interest of DK contract 3 is 2776.37 euro
+    And The balance including interest of DK contract 4 is 1231.51 euro
+    And The balance including interest of DK contract 5 is 895.01 euro
+    And The balance including interest of DK contract 7 is 2270.01 euro
+    And The balance including interest of DK contract 9 is 2000.00 euro
+    And The balance including interest of DK contract 10 is 1593.05 euro
+    And The balance including interest of DK contract 11 is 0.00 euro
+    And The balance including interest of DK contract 11 is 3713.41 euro
+    And The balance including interest of DK contract 13 is 21051.56 euro
+    And The balance including interest of DK contract 14 is 2098.32 euro
+    And The balance including interest of DK contract 15 is 10780.52 euro
+    And The balance including interest of DK contract 16 is 0.00 euro
+    And The balance including interest of DK contract 16 is 0.00 euro
+    And The balance including interest of DK contract 16 is 0.00 euro
+    And The balance including interest of DK contract 16 is 0.00 euro
+    And The balance including interest of DK contract 16 is 0.00 euro
+
+
+

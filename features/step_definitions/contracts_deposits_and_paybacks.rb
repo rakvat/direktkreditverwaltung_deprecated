@@ -3,16 +3,9 @@ Given(/^The date is "(.*?)"$/) do |date|
 end
 
 Given(/^DK contract (\d+) has a balance of (\d+\.\d+) euro and interest of (\d+\.\d+)%$/) do |dk_number, balance, interest|
-  contract = Contract.create!(number: dk_number)
   balance = balance.to_f
   interest = interest.to_f/100
-  last_version = ContractVersion.new
-  last_version.version = 1
-  last_version.contract_id = contract.id
-  last_version.start = Time.now
-  last_version.interest_rate = interest
-  last_version.save!
-  contract.accounting_entries.create!(amount: balance, date: Time.now)
+  Contract.create_with_balance!(dk_number, balance, interest)
 end
 
 When(/^Time passes$/) do
@@ -42,4 +35,12 @@ Then(/^The balance including interest of DK contract (\d+) is (\d+\.\d+) euro$/)
   calculated_balance = contract.balance
   calculated_interest, rows = contract.interest
   assert_equal final_balance.to_s, (calculated_balance + calculated_interest).round(2, :banker).to_s
+end
+
+And(/^DK contracts as described in "(.*?)" exist$/) do |csv_file|
+  Import.contracts(csv_file)
+end
+
+And(/^The deposits and paybacks as described in "(.*?)" occur$/) do |csv_file|
+  Import.accounting_entries(csv_file)
 end

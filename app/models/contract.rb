@@ -203,5 +203,18 @@ class Contract < ActiveRecord::Base
     end
 
     return days
-  end 
+  end
+
+
+  def self.create_with_balance!(dk_number, balance, interest, start_time = Time.now)
+    contract = Contract.create!(number: dk_number)
+    last_version = ContractVersion.new
+    last_version.version = 1
+    last_version.contract_id = contract.id
+    last_version.start = start_time
+    last_version.interest_rate = interest
+    last_version.save!
+    contract.accounting_entries.create!(amount: balance, date: start_time)
+  end
+
 end 

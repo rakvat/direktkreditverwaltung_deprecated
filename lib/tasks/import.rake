@@ -24,18 +24,9 @@ namespace :import do
       puts "parameter 'file' needs to be given" 
       next 
     end
-    CSV.foreach(file, :headers => true) do |row|
-      contract = Contract.where(:number => row.to_hash["contract_id"]).first
-      if !contract
-        puts "contract for contract_id #{row.to_hash[:contract_id]} could not be found"
-        next
-      end
-      entry = AccountingEntry.new
-      entry.contract = contract
-      entry.amount = row.to_hash["amount"]
-      entry.date = row.to_hash["date"]
-      entry.save
-    end
+
+    Import.accounting_entries(file)
+
   end
 
   desc "contract2contractversion"
