@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230141140) do
+ActiveRecord::Schema.define(:version => 20130529145853) do
 
   create_table "accounting_entries", :force => true do |t|
     t.date     "date"
-    t.float    "amount"
+    t.decimal  "amount",      :precision => 14, :scale => 2
     t.integer  "contract_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   add_index "accounting_entries", ["contract_id"], :name => "index_accounting_entries_on_contract_id"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(:version => 20121230141140) do
     t.date     "start"
     t.integer  "duration_months"
     t.integer  "duration_years"
-    t.float    "interest_rate"
+    t.decimal  "interest_rate",   :precision => 5, :scale => 4
     t.integer  "version"
     t.integer  "contract_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   add_index "contract_versions", ["contract_id"], :name => "index_contract_versions_on_contract_id"

@@ -37,11 +37,9 @@ When(/^For DK contract (\d+) a payback of (\d+\.\d+) euro is made on the "(.*?)"
 end
 
 Then(/^The balance including interest of DK contract (\d+) is (\d+\.\d+) euro$/) do |dk_number, final_balance|
-  year = Time.now.year
   contract = Contract.find_by_number(dk_number)
-  final_balance = final_balance.to_f
+  final_balance = BigDecimal.new(final_balance)
   calculated_balance = contract.balance
   calculated_interest, rows = contract.interest
-  assert_equal final_balance, (calculated_balance + calculated_interest)
-
+  assert_equal final_balance.to_s, (calculated_balance + calculated_interest).round(2, :banker).to_s
 end
