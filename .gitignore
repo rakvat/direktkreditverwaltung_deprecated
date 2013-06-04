@@ -29,3 +29,4 @@
 .rvmrc
 #ignore rubymine settings
 .idea/*
+/.project
