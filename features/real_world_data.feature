@@ -21,8 +21,8 @@ Scenario: Anonymized DK data from the zolle11 in year 2011
 
   Then Time passes and it is the "2011-12-31"
     And The balance including interest of DK contract 2 is 1668.89 euro
-    #And The balance including interest of DK contract 6 is 0.00 euro
-    #And The balance including interest of DK contract 1 is 9528.25 euro
+    #And The balance including interest of DK contract 6 is 0.00 euro #Maybe a miscalculation on our part? TODO:Investigate
+    And The balance including interest of DK contract 1 is 9528.28 euro
     #And The balance including interest of DK contract 1 is 9528.29 euro #Maybe a miscalculation on our part? TODO:Investigate
 
 

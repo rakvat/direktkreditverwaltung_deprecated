@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class Contract < ActiveRecord::Base
+  include Days360
   # contract representing one account
 
   belongs_to :contact
@@ -172,37 +173,6 @@ class Contract < ActiveRecord::Base
     end
     interest = rows.inject(0) {|sum, row| sum + row[:interest]}
     return interest, rows
-  end
-
-  # only needed for dates within the same year 
-  # will not work properly for dates in different years
-  # http://en.wikipedia.org/wiki/360-day_calendar 30E/360
-  def days360(date1,date2)
-    day1 = date1.day
-    day2 = date2.day
-    month1 = date1.month
-    month2 = date2.month
-    year1 = date1.year
-    year2 = date2.year
-    if (year1 != year2)
-      Rails.logger.warn "days360 does not calculate for dates from diverse years"
-      return
-    end
-    if (month2 < month1 || (month2 == month1 && day2 < day1)) 
-      Rails.logger.warn "date2 should be later than date1"
-      return
-    end
-
-    days = [0,(month2 - month1 - 1)].max * 30  #full months
-    
-    if (month1 == month2) 
-      days += [30,day2].min - day1
-    else
-      days += [30,day2].min
-      days += 30 - [30,day1].min
-    end
-
-    return days
   end
 
 

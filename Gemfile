@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 
+gem 'days360'
+
 group :test do
   gem 'cucumber', '=1.2.5' #to use debugger in rubymine
   gem 'cucumber-rails', :require => false
