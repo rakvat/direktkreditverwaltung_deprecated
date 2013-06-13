@@ -69,3 +69,35 @@ Scenario: Anonymized DK data from the zolle11 in year 2012
   And The balance including interest of DK contract 28 is 5000.56 euro
   And The balance including interest of DK contract 29 is 5000.67 euro
   And The balance including interest of DK contract 30 is 5000.83 euro
+
+
+
+Scenario: Anonymized DK data from the zolle11 in year 2010
+  Given The date is "2009-12-31"
+    And DK contracts as described in "test/fixtures/data/dk-contracts_2010.csv" exist
+
+  When Time passes
+    And The deposits and paybacks as described in "test/fixtures/data/dk-movements_2010.csv" occur
+
+  Then Time passes and it is the "2010-12-31"
+
+  #8852.58 euro was miscalculated by human error (the sheet gives same result as above)
+  And The balance including interest of DK contract 1 is 8906.25 euro
+  And The balance including interest of DK contract 2 is 1644.23 euro
+  And The balance including interest of DK contract 3 is 1036.07 euro
+  And The balance including interest of DK contract 4 is 518.05 euro
+  And The balance including interest of DK contract 5 is 0.00 euro
+  And The balance including interest of DK contract 6 is 1526.11 euro
+  And The balance including interest of DK contract 7 is 1154.71 euro
+  And The balance including interest of DK contract 8 is 0.00 euro
+  And The balance including interest of DK contract 9 is 2000.00 euro
+  And The balance including interest of DK contract 10 is 1531.19 euro
+  And The balance including interest of DK contract 11 is 3569.22 euro
+  And The balance including interest of DK contract 12 is 3052.67 euro
+  And The balance including interest of DK contract 13 is 10192.5 euro
+  And The balance including interest of DK contract 14 is 2016.84 euro
+  And The balance including interest of DK contract 15 is 10161.67 euro
+  And The balance including interest of DK contract 16 is 10150.00 euro
+  And The balance including interest of DK contract 17 is 10042.78 euro
+  And The balance including interest of DK contract 18 is 3010.67 euro
+  And The balance including interest of DK contract 19 is 576.55 euro
