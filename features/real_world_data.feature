@@ -36,38 +36,25 @@ Scenario: Anonymized DK data from the zolle11 in year 2012
   Then Time passes and it is the "2012-12-31"
 
   And The balance including interest of DK contract 1 is 9007.81 euro
-  #is 9007.87 calculated by this app
-  #9,007.07 € calculated by tübinger sheet (in Kontostand -> Stand zum 12/31/12)
-  #9,007.81 € calculated by tübinger sheet (in Kontostand -> Stand zum 01/01/13)
-
   And The balance including interest of DK contract 2 is 1693.92 euro
   And The balance including interest of DK contract 9 is 2000.00 euro
   And The balance including interest of DK contract 10 is 1593.05 euro
   And The balance including interest of DK contract 11 is 3713.41 euro
-
   And The balance including interest of DK contract 14 is 2098.32 euro
   And The balance including interest of DK contract 15 is 10780.52 euro
   And The balance including interest of DK contract 16 is 10768.14 euro
   And The balance including interest of DK contract 17 is 10244.64 euro
   And The balance including interest of DK contract 18 is 3132.30 euro
-
   And The balance including interest of DK contract 20 is 5166.41 euro
   And The balance including interest of DK contract 21 is 3121.20 euro
   And The balance including interest of DK contract 22 is 2786.10 euro
   And The balance including interest of DK contract 23 is 10550.63 euro
-
-
-
   And The balance including interest of DK contract 27 is 50.00 euro
-
-
-
   And The balance including interest of DK contract 31 is 500.83 euro
   And The balance including interest of DK contract 32 is 180.15 euro
   And The balance including interest of DK contract 33 is 220.18 euro
   And The balance including interest of DK contract 34 is 140.12 euro
   And The balance including interest of DK contract 35 is 180.15 euro
-
 
   And The balance including interest of DK contract 3 is 2776.37 euro
   #is 2776.32
