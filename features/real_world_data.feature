@@ -17,14 +17,15 @@ Scenario: Anonymized DK data from the zolle11 in year 2011
     And For DK contract 1 a deposit of 500.00 euro is made on the "2011-10-14"
 
     And For DK contract 6 a payback of 1526.11 euro is made on the "2011-05-26"
-    And For DK contract 6 a payback of 6.15 euro is made on the "2011-05-26"
+    And For DK contract 6 a payback of 6.11 euro is made on the "2011-05-26"
+    #Actually 6.15 was payed back but that was miscalculated.
+
 
   Then Time passes and it is the "2011-12-31"
     And The balance including interest of DK contract 2 is 1668.89 euro
-    #And The balance including interest of DK contract 6 is 0.00 euro #Maybe a miscalculation on our part? TODO:Investigate
+    And The balance including interest of DK contract 6 is 0.00 euro
     And The balance including interest of DK contract 1 is 9528.28 euro
-    #And The balance including interest of DK contract 1 is 9528.29 euro #Maybe a miscalculation on our part? TODO:Investigate
-
+    #Actually 9528.29 was calculated but that was miscalculation
 
 Scenario: Anonymized DK data from the zolle11 in year 2012
   Given The date is "2011-12-31"
@@ -55,38 +56,15 @@ Scenario: Anonymized DK data from the zolle11 in year 2012
   And The balance including interest of DK contract 33 is 220.18 euro
   And The balance including interest of DK contract 34 is 140.12 euro
   And The balance including interest of DK contract 35 is 180.15 euro
-
   And The balance including interest of DK contract 3 is 2776.37 euro
-  #is 2776.32
-
   And The balance including interest of DK contract 4 is 1231.51 euro
-  #is 1231.5
   And The balance including interest of DK contract 5 is 895.01 euro
-  #is 895.0
-
   And The balance including interest of DK contract 7 is 2270.01 euro
-  #is 2269.99
-
   And The balance including interest of DK contract 13 is 21051.56 euro
-  #is 21050.73
-
   And The balance including interest of DK contract 19 is 850.26 euro
-  #is 850.24
-
   And The balance including interest of DK contract 24 is 691.91 euro
-  #is 691.9
-
   And The balance including interest of DK contract 25 is 3592.75 euro
-  #is 3592.46
-
   And The balance including interest of DK contract 26 is 13213.78 euro
-  #is 13213.06
-
   And The balance including interest of DK contract 28 is 5000.56 euro
-  #is 5000.42
-
   And The balance including interest of DK contract 29 is 5000.67 euro
-  #is 5000.50
-
   And The balance including interest of DK contract 30 is 5000.83 euro
-  #is 5000.62
