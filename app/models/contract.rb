@@ -106,7 +106,7 @@ class Contract < ActiveRecord::Base
     start_balance = balance(start_date)
 
     interest_rate = interest_rate_for_date start_date
-    interest = start_balance * interest_rate
+    interest = (start_balance * interest_rate).round(2)
     interest_rows = []
     interest_rows.push({:date => start_date, 
                         :name => "Saldo", 
@@ -120,7 +120,7 @@ class Contract < ActiveRecord::Base
       days_left = days360(entry[:date], end_date)
       fraction = 1.0 * days_left/360
       interest_rate = interest_rate_for_date entry[:date]
-      interest = entry[:amount] * fraction * interest_rate
+      interest = (entry[:amount] * fraction * interest_rate).round(2)
       interest_rows.push({:date => entry[:date],
                           :name => entry[:amount] > 0 ? "Einzahlung" : "Auszahlung",
                           :amount => entry[:amount],

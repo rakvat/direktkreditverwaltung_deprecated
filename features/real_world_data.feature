@@ -18,14 +18,15 @@ Scenario: Anonymized DK data from the zolle11 in year 2011
 
     And For DK contract 6 a payback of 1526.11 euro is made on the "2011-05-26"
     And For DK contract 6 a payback of 6.11 euro is made on the "2011-05-26"
-    #Actually 6.15 was payed back but that was miscalculated.
+    #Actually 6.15 was payed back but that was miscalculated by human error (the sheet gives same result as above)
 
 
   Then Time passes and it is the "2011-12-31"
     And The balance including interest of DK contract 2 is 1668.89 euro
     And The balance including interest of DK contract 6 is 0.00 euro
-    And The balance including interest of DK contract 1 is 9528.28 euro
-    #Actually 9528.29 was calculated but that was miscalculation
+
+    And The balance including interest of DK contract 1 is 9528.29 euro
+    #If subtotals are not correctly rounded at all times this would be calculated as 9528.29
 
 Scenario: Anonymized DK data from the zolle11 in year 2012
   Given The date is "2011-12-31"
