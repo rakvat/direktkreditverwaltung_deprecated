@@ -27,6 +27,7 @@
 
 #let each developer choose own toolset
 .rvmrc
+.ruby-version
 #ignore rubymine settings
 .idea/*
 /.project
