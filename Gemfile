@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~>3.2' # otherwise 0.9.2 is installed
 gem 'sqlite3', :group => :development
 gem 'pg'
 
@@ -12,7 +12,7 @@ gem 'haml-rails'
 gem 'days360'
 
 group :test do
-  gem 'cucumber', '=1.2.5' #to use debugger in rubymine
+  gem 'cucumber'
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
