@@ -177,4 +177,14 @@ class ContractsController < ApplicationController
       format.json { render json: @contracts }
     end
   end
+
+  # GET /contracts/remaining_term
+  def remaining_term
+    params[:year] ||= DateTime.now.year
+    @year = params[:year].to_i
+    @contracts = Contract.all_with_remaining_month(@year)
+    respond_to do |format|
+      format.html # remaining_term.html.erb
+    end
+  end
 end

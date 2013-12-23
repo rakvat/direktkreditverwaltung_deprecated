@@ -9,6 +9,7 @@ class Contract < ActiveRecord::Base
   has_many :contract_versions
   attr_accessible :number, :category, :comment 
   attr_accessor(:expiring)
+  attr_accessor(:remaining_months)
 
   #account balance for given date
   def balance date = DateTime.now.to_date
@@ -19,6 +20,15 @@ class Contract < ActiveRecord::Base
   # in the contract table (if better?)
   def last_version
     contract_versions.where("start = ?", contract_versions.maximum(:start)).first
+  end
+
+  def version_of date
+    versions = contract_versions.where("start <= ?", date).order('start').reverse
+    versions.each do |v|
+      return v if v.end_date > date
+    end
+    logger.warn "contract '#{id}' has no version for this request" 
+    return last_version
   end
 
   def interest_rate_for_date date
@@ -185,6 +195,18 @@ class Contract < ActiveRecord::Base
     last_version.interest_rate = interest
     last_version.save!
     contract.accounting_entries.create!(amount: balance, date: start_time)
+  end
+
+  def self.all_with_remaining_month(year)
+    date = Date.new(year, 12, 31)
+    non_zero = []
+    contracts = Contract.all
+    contracts.each do |c|
+      version = c.version_of(date)
+      c.remaining_months = ((version.end_date - date).to_i/30.5).to_i
+      non_zero << c if c.balance(date) > 0
+    end
+    non_zero.sort_by { |c| c.remaining_months }.reverse
   end
 
 end 

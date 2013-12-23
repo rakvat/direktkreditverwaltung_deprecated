@@ -12,6 +12,10 @@ gem 'sass-rails'
 
 gem 'days360'
 
+group :development do
+  gem 'debugger'
+end
+
 group :test do
   gem 'cucumber'
   gem 'cucumber-rails', :require => false

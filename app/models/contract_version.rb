@@ -10,4 +10,10 @@ class ContractVersion < ActiveRecord::Base
     write_attribute(:interest_rate, interest)
   end
 
+  def end_date
+    end_date = start
+    end_date = end_date >> duration_months.to_i
+    end_date = end_date >> (duration_years.to_i * 12)
+    end_date
+  end
 end
