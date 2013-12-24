@@ -137,7 +137,7 @@ class ContractsController < ApplicationController
       elsif params[:output] == "pdf_interest_letter"
         render_pdf(PdfInterestLetter) and return
       elsif params[:output] == "pdf_thanks_letter"
-        render_pdf(PDfInterestThanks) and return
+        render_pdf(PdfInterestThanks) and return
       end
     end
 

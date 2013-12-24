@@ -1,20 +1,14 @@
 class PdfInterestOverview < Prawn::Document
-
-  def currency n
-    @view.number_to_currency(n)
-  end
-
-  def fraction n
-    @view.number_to_percentage(n * 100)
-  end
+  include PdfHelper
 
   def initialize(contracts, year, view)
-    super(top_margin: 60, left_margin: 55)
+    super(page_size: 'A4', top_margin: 60, left_margin: 55)
     @contracts = contracts
     @year = year
     @view = view
 
-    # TODO: set font
+    font 'Times-Roman'
+
     text "Zinsen für das Jahr #{@year}", size: 16, style: :bold
     sum_interest = 0
     @contracts.each do |contract|

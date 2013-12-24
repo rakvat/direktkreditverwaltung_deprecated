@@ -19,6 +19,8 @@
 /app/views/layouts/letter.latex.erb
 /app/views/contracts/interest_letter.latex.erb
 /app/views/contracts/thanks_letter.latex.erb
+/custom/*.png
+/custom/*.yml
 
 # let each developer choose own toolset
 .rvmrc
