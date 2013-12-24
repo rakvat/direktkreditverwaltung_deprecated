@@ -24,9 +24,14 @@ Import
     * rake import:accounting_entries[/path/to/csv_file.csv]
 (benötigtes Format der csv-Dateien ist in lib/tasks/import.rake beschrieben)
 
+pdf-Ausgabe
+* ist verfügbar für die Zinsübersicht, Zinsbriefe und Dankesbriefe
+* kann mit Bildern und Textsnippets im Verzeichnis custom angepasst werden
+* die <Dateiname>_template-Vorlagen in diesem Verzeichnis müssen in eine Datei <Dateiname> kopiert werden und dann editiert.
+
 latex-Ausgabe
 * z.B. die Zinsauswertung lässt sich im latex-Format ausgeben. Diese kann dann gespeichert, modifiziert und mit latex, dvipdfm, ... weiter verarbeitet werden
-* es wurde kein pdf-export gewählt, um die Möglichkeit der latex-Datei-Manipulation zu bewahren
+* die latex-Ausgabe ist der pdf-Ausgabe vorzuziehen, wenn die Möglichkeit der latex-Datei-Manipulation vor der pdf-Erstellung nötig ist
 * Templates für die Zinsbriefe befinden sich in /app/views/layouts und /app/views/contracts . Sie enden auf "_template". Kopiere die _template-Dateien in Dateien mit gleichem Namen jedoch ohne "_template" und ändere die die Dateien wo nötig.
 * Parameter für dvipdfm: -p a4 (Papiergröße), -l (Landscape mode für Dankesbriefe) 
 
