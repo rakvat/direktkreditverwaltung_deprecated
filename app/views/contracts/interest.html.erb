@@ -6,6 +6,9 @@
   <% year = Date.current.year %>
   <%= select_tag :year, options_for_select(((year-10)..year).to_a, year) %> 
   <%= select_tag :output, options_for_select({"HTML" => "html", 
+                                              "Übersicht (pdf)" => "pdf_overview", 
+                                              "Zinsbriefe (pdf)" => "pdf_interest_letter", 
+                                              "Dankesbriefe (pdf)" => "pdf_thanks_letter",
                                               "Übersicht (latex)" => "latex_overview", 
                                               "Zinsbriefe (latex)" => "latex_interest_letter", 
                                               "Dankesbriefe (latex)" => "latex_thanks_letter"}, "html") %>

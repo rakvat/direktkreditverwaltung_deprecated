@@ -131,12 +131,28 @@ class ContractsController < ApplicationController
       elsif params[:output] == "latex_thanks_letter"
         render "thanks_letter.latex", :layout => "a5note" and return
       end
+    elsif params[:output] && params[:output].index("pdf") == 0
+      if params[:output] == "pdf_overview"
+        render_pdf(PdfInterestOverview) and return
+      elsif params[:output] == "pdf_interest_letter"
+        render_pdf(PdfInterestLetter) and return
+      elsif params[:output] == "pdf_thanks_letter"
+        render_pdf(PDfInterestThanks) and return
+      end
     end
 
     respond_to do |format|
       format.html 
       format.json { render json: @contracts }
     end
+  end
+
+  def render_pdf klass
+    pdf = klass.new(@contracts, @year, view_context)
+    single = @contracts.length == 1 ? "_#{@contracts.first.number}" : ""
+    send_data pdf.render, filename: "#{klass.to_s}_#{@year}_contract#{single}.pdf", 
+                          type: "application/pdf",
+                          disposition: "inline"
   end
 
   # GET /contracts/interest_transfer_list

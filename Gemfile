@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'sass-rails'
+gem 'prawn'
 
 gem 'days360'
 
