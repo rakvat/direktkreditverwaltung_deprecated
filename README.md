@@ -27,7 +27,7 @@ Import
 pdf-Ausgabe
 * ist verfügbar für die Zinsübersicht, Zinsbriefe und Dankesbriefe
 * kann mit Bildern und Textsnippets im Verzeichnis custom angepasst werden
-* die <Dateiname>_template-Vorlagen in diesem Verzeichnis müssen in eine Datei <Dateiname> kopiert werden und dann editiert.
+* die &lt;Dateiname&gt;_template-Vorlagen in diesem Verzeichnis müssen in eine Datei &lt;Dateiname&gt; kopiert werden und dann editiert.
 
 latex-Ausgabe
 * z.B. die Zinsauswertung lässt sich im latex-Format ausgeben. Diese kann dann gespeichert, modifiziert und mit latex, dvipdfm, ... weiter verarbeitet werden
