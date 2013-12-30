@@ -20,7 +20,8 @@ class PdfInterestThanks < Prawn::Document
     y = cursor
     width = bounds.width + 65
     @contracts.each do |contract|
-      next if contract.balance(DateTime.now.to_date) == 0
+      interest, _ = contract.interest @year
+      next if interest == 0
       if index%2 == 0 && index != 0
         start_new_page
       end
