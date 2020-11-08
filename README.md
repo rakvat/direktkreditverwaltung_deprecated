@@ -1,3 +1,6 @@
+Deprecated. Please use https://github.com/rakvat/direktkreditverwaltung now.
+
+
 Direktkreditverwaltung
 ======================
 
